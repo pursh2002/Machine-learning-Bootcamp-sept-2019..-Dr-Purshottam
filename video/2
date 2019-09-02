@@ -1,2 +1,13 @@
 # Your First Machine Learning Application 
 - https://github.com/mtobeiyf/keras-flask-deploy-webapp
+
+# Building Image classifier 
+Demo - choose the image and upload e.g pandas - hit preditct (inference)
+
+# Machine learning Pipe line 
+1. Get the data any format
+2. use python clean the data (data preperation, normaliasation, transformation , validation,feturization 
+3. model bulding & trainging - feed to machine learning model( Hyperparameter tunning , automatic model selection, model testing,model validation 
+4. model deployment - deployment , batch scoring  
+
+
