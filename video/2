@@ -5,9 +5,44 @@
 Demo - choose the image and upload e.g pandas - hit preditct (inference)
 
 # Machine learning Pipe line 
-1. Get the data any format
+1. data ingestion- Get the data any format
 2. use python clean the data (data preperation, normaliasation, transformation , validation,feturization 
 3. model bulding & trainging - feed to machine learning model( Hyperparameter tunning , automatic model selection, model testing,model validation 
 4. model deployment - deployment , batch scoring  
+
+collection of weight files 1 and 0 big matrix of values learned over tiem from data set , statistic brain 
+learned from the gives new data point classify the data e.g pandas or car , image classification etc 
+
+# Machine learning app pipeline
+deploy -- fit it into larger application which inclue other components data base , api , css , html 
+web - flask framework python
+python - pandas , keras , 
+end user - browser 
+
+## for making money we need to look at larger pic build applications - backend language , data base ,webserver, python , clint side we can make a
+profitable bussiness 
+
+Image classifier - pay from yur client (healthcare x- ray ) care inspection(photo of car automatic for insurance comapany )
+email(spam or not spam), cyber security 
+
+BUilding 
+webapp with python - flask 
+flask installation- https://flask.palletsprojects.com/en/1.1.x/installation/
+https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/26/python-virtual-env/
+mkdir mysiraj
+cd mysiraj
+python3 -m venv venv
+source venv/bin/activate
+
+## follow 
+
+- opening sublime from terminal - 
+- open /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl
+- ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/sublime
+- source .zshrc
+- sublime 
+https://medium.com/@goangle/launch-sublime-3-in-terminal-in-mac-osx-b59b279b62fa
+
+
 
 
