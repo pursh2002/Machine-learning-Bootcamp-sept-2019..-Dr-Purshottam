@@ -33,7 +33,57 @@ mkdir mysiraj
 cd mysiraj
 python3 -m venv venv
 source venv/bin/activate
-source venv/bin/deactivate
+#source venv/bin/deactivate
+sublime hello.py
+quickstart- https://flask.palletsprojects.com/en/1.1.x/quickstart/
+from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+    return 'Hello, World!'
+(save as sublime hello.py)
+export FLASK_APP=hello.py
+$ flask run
+ * Running on http://127.0.0.1:5000/
+ exit = ctrl + c
+ 
+ we can build different pages 
+ @app.route('/yoo')
+def hello_world2():
+    return 'Hello, World2!'
+    
+we build feature on this app like ML, database 
+e.g image classifir 
+logic flow (user flow)- build iage classifier 
+index page - what do we want to be like - upload button in html-- 
+(saved into the database intgrated into mysql(not integreted tothis week ), and a view of image 
+In this project the the image is stored as ststic page 
+- a button for classify -- here the ML model takes the image perform inference output the value in 
+percentege we select the top percentage 
+- so we have the flask for web app and what are we going to build the ML model, the easises thing is using the 
+library Keras , html, javascript, css 
+- from flask import flask
+- from keras.model import load_model  (load_model submodul of keras loads the model)
+- from keras.applications.resnet50 import ResNet50 (resnet50 trained on the bunch of images , car,cat,train ect)
+
+app = Flask(__name__)
+MODEL_PATH = 'models/your_model.h5'
+
+model = ResNet50(weights ='imagenet')
+
+# what we want inside the index
+@app.route('/')
+def index():
+    return render_template('index.html')
+other
+@app.route('/predict')
+def upload():
+  f = request.method = 'POST':
+  f = request.files['file']
+  f.save =model_predict(file_path,model)
+  
+    return render_template('index.html')
 
 ## follow 
 
