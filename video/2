@@ -70,20 +70,35 @@ library Keras , html, javascript, css
 app = Flask(__name__)
 MODEL_PATH = 'models/your_model.h5'
 
-model = ResNet50(weights ='imagenet')
+model = ResNet50(weights ='imagenet') # training has happened and look for infrence 
 
 # what we want inside the index
 @app.route('/')
-def index():
-    return render_template('index.html')
-other
-@app.route('/predict')
+def index():      
+    return render_template('index.html')   # what we want to be inside index - return html page 
+    
+    # create model_prediction function make a prediction wat we are looking at 
+def model_pred(image_path,model):
+    image = image.load_img(image_path) # load the img 
+    x = image.image_to_array(img) # preprocess convert the image to array 
+    preds = model.predict(x) # from keras 
+    return predict 
+# other
+@app.route('/predict')               # predict route - user click classfy -predict route and perform inference 
 def upload():
-  f = request.method = 'POST':
+  f = request.method = 'POST':      # if requeest is post method it will request file f' and save the file_path
   f = request.files['file']
-  f.save =model_predict(file_path,model)
+  f.save(file_path)
+  pred = model_predict(file_path,model) # inference occuring here default keras function
+  pred_class = decode_predictions(preds, top = 1) # decode and give the top = 1
   
-    return render_template('index.html')
+  return pred_class
+  
+  # thats we machine piplline built using coustome classifer from web already trained when ever the user clicks btton its 
+  going to make inference and return what ecer it is 
+  # build html , java script , css 
+  
+  
 
 ## follow 
 
