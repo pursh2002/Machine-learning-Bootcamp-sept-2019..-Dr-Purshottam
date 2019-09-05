@@ -1,0 +1,20 @@
+First, this https://github.com/mtobeiyf/keras-flask-deploy-webapp  is the image classifier from the video from this week. 
+Run it on your local machine to see how it works for yourself.
+
+Now, we've been learning Python throughout this course because it's a very easy language to learn machine learning, 
+but the homework for this week is going to be in the Javascript programming language! You might be thinking "Wait, 
+why a different language?" Because if you're going to be making money using machine learning, you won't only be using Python. 
+Javascript will help you build a web application, accessible from anyone's browser window! And if you want to build a mobile 
+app, you'll want to learn Flutter, but we'll get to that later on in the course. 
+
+The assignment this week is to build a simple image classifier as a web app. 
+
+Follow this tutorial to build your first image classifier using Tensorflow.js (a javascript library) 
+https://www.tensorflow.org/js/tutorials/transfer/image_classification 
+
+Once your code is complete, upload it to GitHub and send the github link to gradedhomeworkassignments@gmail.com 
+with your full name as the subject line. 
+
+Here is how to upload code to GitHub https://medium.com/@sauravbhagat_10426/how-to-upload-code-to-github-6db1c8ff56aa  
+
+Good luck! 
