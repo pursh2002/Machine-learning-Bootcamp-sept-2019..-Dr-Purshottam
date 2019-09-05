@@ -109,6 +109,24 @@ def upload():
 - sublime 
 https://medium.com/@goangle/launch-sublime-3-in-terminal-in-mac-osx-b59b279b62fa
 
+## static folder 
+for css and js file 
+index fiel 
+
+paragraph
+div
+where are this wired 
+button,result ,loader , select button, title, tool
+
+css makes the web pretty , color, box shadow
+
+js is the main where wiring happens , reading image 
+ajax request connecting the python backend and making us to connect html to backend back and forth and back and forth
+js show animatiion , loaded , upload , show tex and image 
+predict - go that url and make predict sending the data as form and returning the image
+
+https://www.youtube.com/watch?v=FTr3n7uBIuE
+
 
 
 
