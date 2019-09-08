@@ -6,4 +6,142 @@ tweets analysis
 e.g apple 
 
 flask login - template https://github.com/MaxHalford/flask-boilerplate
+go to file app - https://github.com/MaxHalford/flask-boilerplate/tree/master/app
+
+sublime .  open to the folder 
+Find file Copy path
+in flask-boilerplate/app/views/main.py
+from flask import render_template, jsonify
+from app import app
+import random
+
+
+@app.route('/')
+@app.route('/index')
+def index():
+    return render_template('index.html', title='Home')
+
+
+@app.route('/map')
+def map():
+    return render_template('map.html', title='Map')
+
+
+@app.route('/map/refresh', methods=['POST'])
+def map_refresh():
+    points = [(random.uniform(48.8434100, 48.8634100),
+               random.uniform(2.3388000, 2.3588000))
+              for _ in range(random.randint(2, 9))]
+    return jsonify({'points': points})
+
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html', title='Contact')
+    
+- change to 
+
+from flask import render_template, jsonify
+from app import app
+import random
+import tweepy
+import NLTK
+import textblob
+
+#login tweeter - auth code 
+consumer_key = ''
+consumer_secret = ''
+
+access_token = ''
+access_token = ''
+
+auth = tweepy.OAuthHandler(consumer_key,consumer_secret)
+auth.set_access_token(access_token,access_token,secret)
+
+api = tweepy.API(auth)
+
+
+@app.route('/')
+@app.route('/index')
+def index():
+    return render_template('index.html', title='Home')
+
+@app.route("search",methods = ["POST"])
+def search():
+	search_tweet = request.form.get("search_query")
+	t = []
+	tweets = api.search(search_tweet)
+	for tweet in tweets:
+		polarity = TextBlob(tweet.full_text).sentiment.polarity
+		subjectivity = TextBlob(tweet.full_text).sentmiment.subjectivity
+		t.append([tweet.full_text,polarity,subjectivity])
+	return jsonify({"sucess":True,"Tweets":t})
+
+@app.route('/map')
+def map():
+    return render_template('map.html', title='Map')
+
+
+@app.route('/map/refresh', methods=['POST'])
+
+def map_refresh():
+    points = [(random.uniform(48.8434100, 48.8634100),
+               random.uniform(2.3388000, 2.3588000))
+              for _ in range(random.randint(2, 9))]
+    return jsonify({'points': points})
+
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html', title='Contact')
+    
+    
+ in index. html flask-boilerplate/app/templates/index.html
+ {% extends "layout.html" %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+
+	<h1 class="ui header">{{ title }}</h1>
+
+	{% if current_user.is_authenticated %}
+	  	<h2 class="ui header">Hi {{ current_user.first_name }}!</h2>
+	{% endif %}
+
+{% endblock %}
+
+change to - 
+{% extends "layout.html" %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+
+	<h1 class="ui header">{{ title }}</h1>
+
+	{% if current_user.is_authenticated %}
+	  	<h2 class="ui header">Hi {{ current_user.first_name }}!</h2>
+	{% endif %}
+
+{% endblock %}
+# creating a space where the twees are going to go(call this back from python
+#inside of search result display the search list such as tweets , subjectivity and poloarity scores
+#ol - ordered list
+<div id='search results'>
+	<ol id="Search_list">
+	</ol>
+
+#once we make this we need to call this from the java script 
+
+
+
+
+
+
+
 
