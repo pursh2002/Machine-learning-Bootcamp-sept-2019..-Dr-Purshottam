@@ -1,1 +1,43 @@
 week2 - https://www.youtube.com/watch?v=UUYPENQPOVA
+
+https://lnkd.in/fzkTSb5
+https://www.youtube.com/watch?v=SGSOCuByo24
+
+# Stock price prediction using reinforcement learning 
+
+colab 
+# 
+import dependencies 
+import dataset(a bunch of stock price)
+define our algorithims how we are going to make predection 
+make those pedictions 
+
+reinforcment - we create a agent that will lean in real enviroment 
+stock market, real electric grid, 
+data structure single array, neural network deep, data structure or algorithim 
+stock market - buy sell 
+game - go up or down 
+electric - 
+# this takes action inside the environemnt it recives two different variale 
+- recive reward or new state of envi
+familar with turing machine state 
+state is numerical representation of of eviroment game - what level of are you 
+energy - mount of energy consumption 
+reward - a scaler value that is similar to state single number define wherate the action is performed  benificial what ever task
+if benifical + 1 or not -1
+reward and state guide the agent to make better learning 
+through feed back loop 
+
+# AI supper power chi fu 
+apply AI ot finance 
+agent - neural network feedforward , recurent network 
+output  - net
+
+https://medium.com/inside-machine-learning/reinforcement-learning-the-business-use-case-part-1-65976c745319
+https://medium.com/inside-machine-learning/reinforcement-learning-the-business-use-case-part-2-c175740999
+https://www.analyticsvidhya.com/blog/2017/01/introduction-to-reinforcement-learning-implementation/
+https://www.kdnuggets.com/2018/03/5-things-reinforcement-learning.html course materials and book available 
+
+
+
+
