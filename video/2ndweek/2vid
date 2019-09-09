@@ -14,5 +14,17 @@ using ML such as clustring techniques to group transaction and find abonaormalit
 
 Investment chat box 
 built using dialog flow 
+import numpy 
+# for data 
+import pands as pd 
+import matplotlib.pyplot as plt
+import seborn as sns 
+sns.set()
+
+!pip install yfinance 
+https://aroussi.com/post/download-options-data
+https://github.com/ranaroussi/yfinance
+
+pip install yfinance --upgrade --no-cache-dir
 
 
