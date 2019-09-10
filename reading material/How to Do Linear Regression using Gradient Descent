@@ -1,1 +1,77 @@
 https://www.youtube.com/watch?v=XdM6ER7zTLk&t=775s
+
+relationship between hours studies and test scores 
+the way we gon to optimize is gradient desent 
+
+- conceputaly 
+- implement mathmaticaly and programaticly 
+
+we need to find the line of best fit line 
+using this line we can predict the students test score 
+how do we get that - we do gradient descent (it is used every where in mal and dl )
+we think every think in terms of optimisation we ahve some loss function which we want to minimize over time and gradedient deent is one of the technique to do that 
+there are plenty od methods to get the least squared errors - this is the sum of squared errors 
+
+linear regression is just ML there is no neural network 
+
+look at the data
+
+test score and amount of hours studies 
+
+https://github.com/llSourcell/linear_regression_live
+
+
+from numpy  import *
+
+def compute_error_for_given_points(b,m,points)
+	totalError = 0 
+	for i in range(0, len(points)): # for evry point
+		x = points[i,0]  # what are the x values 
+		y = points[i,1]	# what are the y value 
+		totalError += (y - (m * x + b))**2
+	return totalError / float(len(points)) 
+
+def step_gradient(b_current,m_current,points,learningRate):
+	#gradient descent (used all the time so need to know alal the time )
+		b_gradient = 0
+		m_gradient = 0
+		N= float(len(points)):
+		for i in range(0,len(points)):
+			x = points[i,0]
+			y = points[i,1]
+			b_gradient += -(2/N) * (y - ((m_current * x) * b_current))
+			m_gradient += -(2/N) * x * (y - ((m_current * x) * b_current))
+		new_b = b_current - (learnngRate * b_gradient)
+		new_m = m_current -(learningRate * m_gradient)
+		return [new_b,new_m]
+
+def gradient_descent_runner(points,starting_b,strating_m,learningRate)
+	b = starting_b
+	m = strating_m
+
+	for i in range(num_iterations):
+		b,m = step_gradient(b,m array(points),learning_rate)
+	return[b,m]
+
+def run():
+	points = genformtxt('data.csv',delimiter = ',')
+	# hyperparameters (optimal learning rate)
+	learning_rate = 0.0001
+	# y = mx+b
+	initial_b = 0
+	initial_m = 0
+	num_iterations = 1000 
+	[b,m] =gradient_decent_runner (points,learning_rate,initial_b,initial_m,num_iterations)
+	print(b)
+	print(m)
+
+
+if __name__ == '__main__':
+	run()
+
+
+
+
+
+
+
