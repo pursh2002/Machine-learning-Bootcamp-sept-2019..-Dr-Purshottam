@@ -1,2 +1,2 @@
 # Machine-learning-with-Siraj-Raval
- ML
+ Making Money with Machine learnng
