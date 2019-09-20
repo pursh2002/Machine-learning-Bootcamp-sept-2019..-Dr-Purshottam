@@ -1,0 +1,80 @@
+https://www.youtube.com/watch?time_continue=76&v=J9FwicMAnpc
+
+postman - https://www.getpostman.com/downloads/
+https://www.kaggle.com/mlg-ulb/creditcardfraud
+https://github.com/yazanobeidi/fraud-detection/blob/master/project.ipynb
+
+mkdir ..
+cd 
+sublime .
+export FLASK_APP=hello.py
+flask run 
+
+
+once in flask edit tehe file 
+from flask import Flask
+import numpy 
+import json
+import sys
+import pandas as pd 
+from sklearn.decomposition import PCA
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression 
+from sklearn.externals import joblib
+
+#the pretrained model what we saved 
+
+
+db = SQLAlchemy(app)
+auth = FirebaseAuth(app)
+login_manager = LoginManager(app)
+
+app.register_blueprint(auth.blueprint, url_prefix='/auth')
+
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+	return 'Hello, World!'
+
+filename = "trained_model.save"
+@app.route('signup').method =['GET']
+def signup process():
+	card_data = request.json
+	charge = stripe.Charge.create(
+	amount = card_data.amount,
+	currency=card_data.currency,
+	customer=card_data.customer,
+	description=card_data.description,
+	metadata=card_data.id
+)
+
+new_order.charge_id = charge.id
+
+filename = "trained_model.save"
+now define bunch of  routes where the paid user or us can query the built in ml models 
+@app.route('/api/v0/verify'),methods= ['GET','POST'])
+def predict_test():
+  vector = pd.dataframe(request.json)
+  if(database.quesry(vector.id)) == true:
+  
+  loaded_model = joblib(filename)
+  res = str(loaded_model.predict(vector)[10])
+  result = [
+  
+  { id = 0
+    predection = res
+    
+  }
+  
+  ]
+  return jasonify(result)
+
+test 
+
+add pay github search-- stripe python https://stripe.com/docs/api
+
+firebase to create backend 
+https://github.com/klokantech/flask-firebase
+
+
