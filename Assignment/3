@@ -1,0 +1,180 @@
+x0 = pd.read_csv("train_transaction.csv")
+x1 = pd.read_csv("train_identity.csv")
+test_transaction = pd.read_csv('test_transaction.csv')
+test_identity = pd.read_csv('test_identity.csv')
+sample = pd.read_csv('sample_submission.csv')
+
+
+features = ['TransactionAmt'] + ['V%d' % number for number in range(1, 29)]
+target = 'isFraud'
+df = x0[features]
+y = x0[target]
+
+
+def normalize(df):
+    """
+    Make the distribution of the values of each variable similar by subtracting the mean and by dividing by the standard deviation.
+    """
+    for feature in df.columns:
+        df[feature] -= df[feature].mean()
+        df[feature] /= df[feature].std()
+    return df
+def reduce_mem_usage(df):
+    """ iterate through all the columns of a dataframe and modify the data type
+        to reduce memory usage.
+    """
+    start_mem = df.memory_usage().sum() / 10242
+    print('Memory usage of dataframe is {:.2f} MB'.format(start_mem))
+
+    for col in df.columns:
+        col_type = df[col].dtype
+
+        if col_type != object:
+            c_min = df[col].min()
+            c_max = df[col].max()
+            if str(col_type)[:3] == 'int':
+                if c_min > np.iinfo(np.int8).min and c_max < np.iinfo(np.int8).max:
+                    df[col] = df[col].astype(np.int8)
+                elif c_min > np.iinfo(np.int16).min and c_max < np.iinfo(np.int16).max:
+                    df[col] = df[col].astype(np.int16)
+                elif c_min > np.iinfo(np.int32).min and c_max < np.iinfo(np.int32).max:
+                    df[col] = df[col].astype(np.int32)
+                elif c_min > np.iinfo(np.int64).min and c_max < np.iinfo(np.int64).max:
+                    df[col] = df[col].astype(np.int64)
+            else:
+                if c_min > np.finfo(np.float16).min and c_max < np.finfo(np.float16).max:
+                    df[col] = df[col].astype(np.float16)
+                elif c_min > np.finfo(np.float32).min and c_max < np.finfo(np.float32).max:
+                    df[col] = df[col].astype(np.float32)
+                else:
+                    df[col] = df[col].astype(np.float64)
+        else:
+            df[col] = df[col].astype('category')
+
+    end_mem = df.memory_usage().sum() / 10242
+    print('Memory usage after optimization is: {:.2f} MB'.format(end_mem))
+    print('Decreased by {:.1f}%'.format(100 * (start_mem - end_mem) / start_mem))
+    return df
+# Define the model
+model = LogisticRegression()
+
+# Define the splitter for splitting the data in a train set and a test set
+splitter = StratifiedShuffleSplit(n_splits=1, test_size=0.5, random_state=0)
+
+# Loop through the splits (only one)
+for train_indices, test_indices in splitter.split(X, y):
+    # Select the train and test data
+    X_train, y_train = X.iloc[train_indices], y.iloc[train_indices]
+    X_test, y_test = X.iloc[test_indices], y.iloc[test_indices]
+
+    # Normalize the data
+    X_train.fillna(0)
+    X_train = normalize(X_train)
+    X_test = normalize(X_test)
+
+
+    #print(df_cat.isna().mean().round(4)*100 )
+    # Fit and predict!
+    model.fit(X_train, y_train)
+    y_pred = model.predict(X_test)
+    # And finally: show the results
+    print(classification_report(y_test, y_pred))
+This is the script with same error.. I am about to check for Nans
+whenever your reference 'df' are you referring to the feature matrix?
+
+
+
+this is the get_dummies line if anyone wants to use it by modifying it to save time, it automatically removed the original column, and given that NaN is still a value (doesnt create a column for NaN values) wont have to worry about dummy variable trap, it also writes all the data to the same DF, so wont have to worry about merging dummy df with original:
+df_cat = pd.get_dummies(df_full, prefix=['ProductCD', 'card1', 'card2', 'card3', 'card4', 'card5', 'card6', 'addr1', 'addr2', 'P_emaildomain', 'R_emaildomain', 'M1', 'M2', 'M3', 'M4', 'M5', 'M6', 'M7', 'M8', 'M9', 'id_01', 'id_02', 'id_03', 'id_04', 'id_05', 'id_06', 'id_07', 'id_08', 'id_09', 'id_10', 'id_11', 'id_12', 'id_13', 'id_14', 'id_15', 'id_16', 'id_17', 'id_18', 'id_19', 'id_20', 'id_21', 'id_22', 'id_23', 'id_24', 'id_25', 'id_26', 'id_27', 'id_28', 'id_29', 'id_30', 'id_31', 'id_32', 'id_33', 'id_34', 'id_35', 'id_36', 'id_37', 'id_38'], columns=['ProductCD', 'card1', 'card2', 'card3', 'card4', 'card5', 'card6', 'addr1', 'addr2', 'P_emaildomain', 'R_emaildomain', 'M1', 'M2', 'M3', 'M4', 'M5', 'M6', 'M7', 'M8', 'M9', 'id_01', 'id_02', 'id_03', 'id_04', 'id_05', 'id_06', 'id_07', 'id_08', 'id_09', 'id_10', 'id_11', 'id_12', 'id_13', 'id_14', 'id_15', 'id_16', 'id_17', 'id_18', 'id_19', 'id_20', 'id_21', 'id_22', 'id_23', 'id_24', 'id_25', 'id_26', 'id_27', 'id_28', 'id_29', 'id_30', 'id_31', 'id_32', 'id_33', 'id_34', 'id_35', 'id_36', 'id_37', 'id_38'])
+but be warned, if you're going to do all columns like this, you will need at least 256GB of ram, to process it, just a heads up
+next going to try using tf for the first time to do the logistic regression instead of scikit, which im hoping would be... faster
+@Jared A yes, and its connected by the transaction ID, wanna merge the train transaction and train identity into 1 DF
+don't use the test_ files, as it doesnt have the isFraud column, as it is to be used to generate the submission file for the competetion
+
+
+https://botlnec.github.io/islp/#how-to-colaborate
+
+https://www.kaggle.com/kartikathale/fraud-detection-eda-basic-logistic-regression
+
+load data (reduce memory usage)- https://www.kaggle.com/gemartin/load-data-reduce-memory-usage
+
+https://www.kaggle.com/robertoruiz/dealing-with-multicollinearity
+https://github.com/kapilnchauhan77/Credit-card-fraud-detector/blob/master/Fraud_CreditCard_Detector.ipynb
+
+https://nbviewer.jupyter.org/github/Akshay594/Machine-Learning-Course/blob/master/IEEE%20Fraud%20Detection.ipynb
+https://www.kaggle.com/tunguz/eda-with-python-datatable
+
+https://datatable.readthedocs.io/en/latest/index.html
+
+https://www.kaggle.com/plasticgrammer/ieee-cis-fraud-detection-eda
+https://colab.research.google.com/drive/1NESxEE_gbo_3mc4RqlXWtogWQnQYjJFJ#scrollTo=_2dF4zk427zq
+
+snippet:
+
+# Create correlation matrix
+corr_matrix = df.corr().abs()
+
+# Select upper triangle of correlation matrix
+upper = corr_matrix.where(np.triu(np.ones(corr_matrix.shape), k=1).astype(np.bool))
+
+# Find index of feature columns with correlation greater than 0.95
+to_drop = [column for column in upper.columns if any(upper[column] > 0.95)]
+
+https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.join.html
+https://www.youtube.com/watch?v=tGw-ZACouik&feature=youtu.be
+
+https://github.com/zjost/cc_fraud_proj/blob/master/sandbox.ipynb
+https://www.kaggle.com/c/home-credit-default-risk/discussion/63524
+
+https://github.com/namas191297/rest_api_flask
+
+https://stackoverflow.com/questions/47239716/join-2-csv-with-pandas
+
+For anyone using Colab for HW, Go to myaccount in Kaggle and generate an API key,
+then in colab execute the following command to load the dataset:-
+
+import os
+os.environ['KAGGLE_USERNAME'] = "XXXXXXX" # username from the json file 
+os.environ['KAGGLE_KEY'] = "YYYYYYYYYYYYYYYYYYY" # key from the json file
+!kaggle competitions download -c ieee-fraud-detection # api copied from kaggle
+
+https://github.com/tainangao/flask_test/blob/master/hello.py
+https://www.kaggle.com/krishonaveen/xtreme-boost-and-feature-engineering
+
+
+1. Use kaggle kernels. You will get the data pre-loaded and the memory you will need will be there.
+2. Start off by reading the csv files into data frames.
+3. Merge the identity and transaction dataframes to form 2 dataframes - train and test
+4. You should also consider converting the data types as that can reduce memory consumption but you can skip it.
+5. Calculate the number of missing values in each column. If a column has more than 80% missing values, remove that column. You can go for any other value as well but 50% is way low.
+6. You can use sns.distplot for univariate analysis, sns.countplot for the products, etc.
+7. You can use barplots for cards but I would not recommend it as the data is way too large and you might end up consuming a lot of memory.
+8. Instead of one hot encoding, try something like label encoding. 
+9. If there are any nan's, you can either remove the row or replace it with median or mode. Do not use mean.
+10. Finally, you can remove columns like TransactionID and TransactionDT as they are going to be different for future transactions. Do this for both train and test dataframes.
+11. Split train dataframe into X and y. X will have all columns except isFraud and y will have only isFraud column.
+12. Finally, train the logistic regression model from sklearn.
+
+
+there are a few ways to deal with the imbalance. You can upsample the minority set, you can downsample the majority set or you can use weights to adjust the model based on the imbalance. In sklearn implementation of logistic regression, you can use the class_weight parameter to adjust the weights.
+
+To know what approach works best, you need to try them all and see what gives you the best performance. Common methods to do this type of work include: nearmiss-1, nearmiss-2, nearmiss-3, SMOTE, in addition to the naive (random) up/down sampling. 
+
+Overview of the nearmiss methods:
+https://arxiv.org/pdf/1608.06048.pdf
+
+SMOTE:
+https://arxiv.org/pdf/1106.1813.pdf
+(including the library called imblearn)
+
+Naive (random) Up/Downsampling:
+https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.sample.html
+
+Weighted Cost Function:
+https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html
+https://www.youtube.com/results?search_query=scikit+learn+regression+categorical+numerical
+
+https://stackoverflow.com/questions/34007308/linear-regression-analysis-with-string-categorical-features-variables
+
+https://www.youtube.com/watch?time_continue=263&v=e9XzWiy-Lgk
+https://www.youtube.com/watch?v=frM_7UMD_-A
