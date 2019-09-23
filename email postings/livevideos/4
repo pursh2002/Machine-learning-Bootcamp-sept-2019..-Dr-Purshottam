@@ -1,0 +1,27 @@
+Exponontial https://www.youtube.com/watch?v=FNQSM4ipZog
+simulation hypothesis book
+
+transfer learning 
+classifer really making money pretrain and retrain what eevr that are present 
+import os # reading from the file 
+import math # data preprocessing 
+import numpy 
+import json 
+from matplotlib import pyplot as plt
+import tensorflow as tf # for ML
+tf.enable_eager_execution() # two typs of ML, good way to train # define and run older type(slower)
+Auto = tf.data.experimental.AUTOTUNE() # training faster (data pipline faster) batch process faster
+
+GCS_Pattern= "'gs://flowers-public/tfrecords-jpeg-192x192-2/*.tfrec'      # track where our file GCS_PATTERN = 'gs://flowers-public/tfrecords-jpg-192x192-2/*.tfrec'
+#https://medium.com/@cl2227619761/creating-tensorflow-tfrecords-file-using-images-ade8f3076131
+IMAGE_SIZE = [192,192]
+BATCH_SIZE = 64
+EPOCH = 10
+VALIDATION_SPLIT = 0.19
+CLASSES = ['daisy', 'dandelion', 'roses', 'sunflowers', 'tulips'] 
+filenames = tf.gfile.Glob(GCS_PATTERN)
+split = int(len(filenames)*VALIDATION_SPLIT)
+training_filenames = filename[split:]
+validation_filename = filename[:split]
+validation_steps = 30
+steps_per_epoch =30
