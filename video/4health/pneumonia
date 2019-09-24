@@ -1,0 +1,23 @@
+Kaggle Pneumonia 
+React - java script library (millions of js library )
+front end app in asustainable and scalable 
+DOM(Document object model)send and recive data from client and server side in tables and graph 
+Creating avirtual DOM render pages faster , multiple request between clina and server without lag  asyncronous data transfer better way to structure 
+Browser react nodejs - we can use flask node in flask interchange 
+search best repositories which can be used 
+
+https://www.youtube.com/watch?v=MhkGQAoc7bc&list=PLoYCgNOIyGABj2GQSlDRjgvXtqfDxKm5b
+https://www.dropzonejs.com (beautiful drag and upload)
+pay wall stripe
+https://github.com/llSourcell/AI_Startup_Prototype/search?q=stripe&unscoped_q=stripe
+<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+
+            data-key="pk_test_TQmy1LFbeJ6tgZLOdzT4pZRh00mJ3yq97c"
+            data-description="A Flask Charge"
+            data-amount="500"
+	    data-email="{{ email }}"
+            data-locale="auto"></script>
+  </form>
+  
+  https://www.freecodecamp.org/news/how-i-build-a-desktop-chat-app-with-cometchat-and-nw-js-and-how-you-can-too/
+  
