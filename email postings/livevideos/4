@@ -29,3 +29,4 @@ validation_steps = 30
 steps_per_epoch =30
 
 NIH dataset 
+https://colab.research.google.com/github/GoogleCloudPlatform/training-data-analyst/blob/master/courses/fast-and-lean-data-science/04_Keras_Flowers_transfer_learning_solution.ipynb
