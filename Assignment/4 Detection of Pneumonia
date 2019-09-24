@@ -4,3 +4,71 @@ https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0221339
 https://github.com/anjanatiha/Pneumonia-Detection-from-Chest-X-Ray-Images-with-Deep-Learning/blob/master/code/Detection%20of%20Pneumonia%20from%20Chest%20X-Ray%20Images%201.0.0.3.ipynb
 https://github.com/arc144/siim-pneumothorax
 https://blogs.technet.microsoft.com/machinelearning/2018/03/07/using-microsoft-ai-to-build-a-lung-disease-prediction-model-using-chest-x-ray-images/
+https://www.kaggle.com/ashishpatel26/transfer-learning-with-inception-v3
+https://github.com/FlorianWoelki/pneumonia_detection/blob/master/pneumonia_detection.ipynb
+https://keras.io/applications/#inceptionv3
+https://www.youtube.com/watch?v=-nPjVoq5mdE
+https://colab.research.google.com/github/GoogleCloudPlatform/training-data-analyst/blob/master/courses/fast-and-lean-data-science/04_Keras_Flowers_transfer_learning_solution.ipynb
+https://www.youtube.com/watch?v=yofjFQddwHE
+https://keras.io/models/sequential/
+https://colab.research.google.com/notebooks/welcome.ipynb
+
+import cv2
+import cv
+
+color_img = cv2.cvtColor(gray_img, cv.CV_GRAY2RGB)
+
+drive.mount('/gdrive')
+!unzip '/gdrive/My Drive/chest-xray-pneumonia.zip'
+!unzip '/gdrive/My Drive/chest_xray.zip'
+
+!wget https://data.mendeley.com/datasets/rscbjbr9sj/2/files/41d542e7-7f91-47f6-9ff2-dd8e5a5a7861/ChestXRay2017.zip
+
+from zipfile import ZipFile
+with ZipFile("./ChestXRay2017.zip", "r") as f:
+    f.extractall(path = "./")
+
+train_files = "./chest_xray/train/"
+test_files = "./chest_xray/test/"
+
+os.environ['KAGGLE_USERNAME'] = "(your username)" 
+os.environ['KAGGLE_KEY'] = "(your kaggle key)" 
+!kaggle datasets download -d paultimothymooney/chest-xray-pneumonia
+
+If you wish to use images stored in Google Drive, you may connect your Colab session to a Google account whose GDrive you wish to use to load/save data from.
+
+To use Google Drive from Google Colab:
+from google.colab import drive
+import os
+
+if not os.path.isdir("./drive"):
+    drive.mount("/content/drive/")
+
+- You may directly download the data to your Colab session using wget or urllib.requests
+
+base_model = InceptionV3(weights='imagenet', include_top=False)
+x = base_model.output
+x = keras.layers.Dropout(0.5)(x)
+x = keras.layers.GlobalAveragePooling2D()(x)
+x = keras.layers.Dense(51024, activation='relu')(x)
+x = keras.layers.BatchNormalization()(x)
+predictions = keras.layers.Dense(2, activation='sigmoid')(x)
+model = keras.models.Model(inputs=base_model.inputs, outputs=predictions)
+https://www.tensorflow.org/api_docs/python/tf/keras/applications/inception_v3/preprocess_input
+https://stackoverflow.com/questions/44341258/preprocessing-function-of-inception-v3-in-keras
+http://openaccess.thecvf.com/content_ECCVW_2018/papers/11134/Xie_Pre-training_on_Grayscale_ImageNet_Improves_Medical_Image_Classification_ECCVW_2018_paper.pdf
+https://physionet.org/content/mimic-cxr/2.0.0/
+http://openaccess.thecvf.com/content_ECCVW_2018/papers/11134/Xie_Pre-training_on_Grayscale_ImageNet_Improves_Medical_Image_Classification_ECCVW_2018_paper.pdf
+https://venturebeat.com/2018/09/10/unanimous-ai-achieves-22-more-accurate-pneumonia-diagnoses/
+https://github.com/serkansokmen/ml-workspace/blob/master/ML_Course_Week_04_Transfer_Learning_Homework.ipynb
+https://medium.com/@joelognn/improving-cnn-training-times-in-keras-7405baa50e09
+https://keras.io/getting-started/functional-api-guide/
+https://keras.io/layers/normalization/#batchnormalization
+https://nbviewer.jupyter.org/github/Dexter1618/MMWML/blob/master/Week04/Pneumonia_Detection_Transfer_Learning.ipynb
+https://www.tensorflow.org/api_docs/python/tf/keras/preprocessing/image/ImageDataGenerator
+https://www.pyimagesearch.com/2018/12/24/how-to-use-keras-fit-and-fit_generator-a-hands-on-tutorial/
+https://stackoverflow.com/questions/42443936/keras-split-train-test-set-when-using-imagedatagenerator
+https://jovianlin.io/cat-crossentropy-vs-sparse-cat-crossentropy/
+https://datascience.stackexchange.com/questions/41921/sparse-categorical-crossentropy-vs-categorical-crossentropy-keras-accuracy
+https://www.kaggle.com/faheld/fork-of-homework-week-4-machinelearningcourse-io
+https://arxiv.org/pdf/1603.06430.pdf
