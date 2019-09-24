@@ -1,4 +1,6 @@
-Exponontial https://www.youtube.com/watch?v=FNQSM4ipZog
+https://www.youtube.com/watch?v=-nPjVoq5mdE
+Exponontial 
+https://www.youtube.com/watch?v=FNQSM4ipZog
 simulation hypothesis book
 
 transfer learning 
@@ -25,3 +27,5 @@ training_filenames = filename[split:]
 validation_filename = filename[:split]
 validation_steps = 30
 steps_per_epoch =30
+
+NIH dataset 
