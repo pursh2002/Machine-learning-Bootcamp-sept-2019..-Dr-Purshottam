@@ -19,3 +19,71 @@ deep genomic -
 
 app dibetic retinopathy Kaggle - learn from this disease and classify the disease and automat this lib numpy , open cv(resize , color) this will all be benificial 
 for accuracy of model , then Keras build classifyer and then make prediction . optomatris and paid 
+
+https://github.com/DLTK/DLTK/tree/master/examples/tutorials
+
+In this post, I'd like to introduce you to a library called DLTK, the deep learning toolkit for medical imaging. It extends Tensorflow to enable deep learning on biomedical images. Biomedical images are different from regular photographs, sometimes they are in 3 dimensions, sometimes they have time as an additional dimensions (5D), and multiple channels. Clinical protocols tend to stratify how an image is acquired (i.e a patient is heads-down on a table). Thus, it makes sense to create a python library that is dedicated to learning specifically from these types of images. Enter, DLTK
+
+
+
+In medical imaging. processing image data is is one of the most challenging steps. DLTK provides 3 ways to do this.
+
+Feeding: Python code provides the data when running each step
+TFRecords: record-oriented file format to process large datasets that do not fit in memory
+Generators: use native python generator functions to generate synthetic image data
+
+
+In the GitHub repository, they've created 4 great code tutorials that demonstrates how it works, output included. Scan through all 4 of them here
+
+https://github.com/DLTK/DLTK/tree/master/examples/tutorials 
+
+Automatic Diagnosis applications are a perfect, low hanging fruit example of how to use machine learning to make money. That's because deep learning outperforms traditional computer vision AND it outperforms doctors when classifying patient scans. You can imagine a business pipeline like so
+
+Step 1 - Acquire biomedical image data 
+
+Step 2 - Build a medical image classifier app
+
+Step 3 - Sell it to patients, much cheaper than a doctors visit. Or sell it to doctors as a tool with a hefty subscription fee.
+
+This blogpost goes into a lot of detail about how DLTK works, check it out
+
+https://medium.com/tensorflow/an-introduction-to-biomedical-image-analysis-with-tensorflow-and-dltk-2c25304e7c13 
+
+While we're on the topic of making money using healthcare AI, allow me to introduce you to BioBERT 
+
+
+
+BIO-Bert 
+
+
+These guys trained a language model to give medical diagnosis advice after training on billions of words related to medical 
+Q&As on PubMed and other medical websites. This is HUGE. In fact, if i were forced to start a strictly software startup, this 
+is what I would want to do. Not sure how a transformer model works? When it comes to NLP, it doesn't matter that much for 
+implementation. You can easily serve a pretrained model in a few lines of code. Check out their repository
+
+https://github.com/re-search/DocProduct  
+
+Even better is their live web demo. Go through this web demo, compile all the code bit by bit until you can play with the 
+input/output machine. Go ahead, try it out. It's shockingly good in its ability to diagnose your problem. 
+
+https://colab.research.google.com/drive/11hAr1qo7VCSmIjWREFwyTFblU2LVeh1R 
+
+I'm convinced that someone in the next few months (that's right, months!) is going to start the next billion dollar 
+healthcare company that's built off of BIOBert. Let's keep that between us, I want one of you guys to be the ones that 
+does it! You can imagine creating a 'doctor in your pocket' type app using a pretrained biobert model on mobile or a 
+web app that does the same. It doesn't end there though. Ask yourself, what else can we do with a pretrained language 
+model on valuable biomedical data?
+
+- We can classify or generate suitable treatment drugs.
+
+- We can create an electronic health record summarizer
+
+- We can create a tool that assesses a real doctors diagnosis, either in practice or during medical school. 
+
+
+
+In conclusion, BIOBert and DLTK are my 2 tools of choice when it comes to making money in healthcare with AI.  
+Remember them! They're going to come in handy later on. 
+
+
+
