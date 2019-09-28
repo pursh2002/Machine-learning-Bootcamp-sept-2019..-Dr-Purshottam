@@ -1,0 +1,21 @@
+image processing 
+CNN network well suided for Image data 
+its sries of Filters this are matrices of number image goes through the network it splits into more and more filters ad network will learn the different parts and will classify the image based on predefined 
+weather or not or yes disease, unsupurvised is anaother way to do that ... 
+clustring - we can do th image classification on k mean he image data and the anomoly is the diseas 
+automating alla the diseas , without data there is no machine learning 
+-Biobert NLP is newer model th was trained on medical data questions and answers from pub med , reddit lnew data set 
+we can create question and answer system , general doctor , used case speilty wise skin, medicne 
+proof of concept, and then figure it out laws ....build and talk  tutorial are ther - pretrain nd train them 
+automated software - chatbots we can use biobert 
+
+Drug discovery - 72 million base pair for potential cure for adisease  - automate base pair classify 
+generative model , generate new drug based on new data - goodfellow 
+geenrated and discrimenator - we can train them on molecules and didfferent types of drugs 
+
+Neural network is the best techinique, deep learning
+
+deep genomic - 
+
+app dibetic retinopathy Kaggle - learn from this disease and classify the disease and automat this lib numpy , open cv(resize , color) this will all be benificial 
+for accuracy of model , then Keras build classifyer and then make prediction . optomatris and paid 
