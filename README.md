@@ -1,2 +1,1 @@
-# Machine-learning-with-Siraj-Raval
- MMML
+# Machine-learning-with-MMML
