@@ -25,7 +25,7 @@ np.random.seed(123)
 env.seed(123)
 nb_actions = env.action_space.n
 
-#Building a very simple single hidden layer neural network model:
+#Building a simple single hidden layer neural network model:
 
 model = Sequential()
 model.add(Flatten(input_shape=(1,) + env.observation_space.shape))
@@ -42,7 +42,8 @@ dqn = DQNAgent(model=model, nb_actions=nb_actions, memory=memory, nb_steps_warmu
 target_model_update=1e-2, policy=policy)
 dqn.compile(Adam(lr=1e-3), metrics=['mae'])
 
-# Okay, now it's time to learn something! We visualize the training here for show, but this slows down training quite a lot. 
+#  time to learn something, visualize the training 
+
 dqn.fit(env, nb_steps=5000, visualize=True, verbose=2)
 
 # Test our reinforcement learning model:
